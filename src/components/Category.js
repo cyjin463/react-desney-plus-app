@@ -7,7 +7,7 @@ const Category = () => {
     return (
         <Container>
             {videosArray.map((video, index) => (
-                <Wrap>
+                <Wrap key={index}>
                     <img src={`/images/viewers-${video}.png`} alt={`${video}`} />
                     <video autoPlay loop muted>
                         <source src={`/videos/${video}.mp4`} type="video/mp4" />

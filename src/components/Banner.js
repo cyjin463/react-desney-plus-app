@@ -1,6 +1,6 @@
 import axios from "../api/axios";
 import React, { useEffect, useState } from "react";
-import request from "../api/request";
+import requests from "../api/request";
 import "./Banner.css";
 import styled from "styled-components";
 
@@ -13,10 +13,9 @@ const Banner = () => {
     }, []);
 
     const fetchData = async () => {
-        const response = await axios.get(request.fetchNowPlaying);
+        const response = await axios.get(requests.fetchNowPlaying);
 
         const results = response.data.results;
-
         const movieId = results[Math.floor(Math.random() * results.length)].id;
 
         const { data: movieDetail } = await axios.get(`/movie/${movieId}`, {
@@ -55,7 +54,6 @@ const Banner = () => {
                     backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`,
                     backgroundPosition: "top center",
                     backgroundSize: "cover",
-                    // height: "300px",
                 }}>
                 <div className="banner__contents">
                     <h1 className="banner__title">
